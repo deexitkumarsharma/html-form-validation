@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>form validation</title>
+  </head>
+  <body>
+    <div class="container">
+    <form
+      name="myForm"
+      onsubmit="return validateForm()"
+      method="post"
+    >
+      <div class="formdesign" id="name">
+        Your Name: <input type="text" name="fname" required /><b
+          ><span class="formerror"> </span
+        ></b>
+      </div>
+
+      <div class="formdesign" id="email">
+        Your Email: <input type="email" name="femail" required /><b
+          ><span class="formerror"> </span
+        ></b>
+      </div>
+
+      <div>
+        <label for="fav">What do you love?<br /></label>
+        <select id="fav">
+          <option>Movies</option>
+          <option>Travelling</option>
+          <option>Music</option>
+          <option>Games</option>
+        </select>
+      </div>
+      <div>
+        <label for="color">Choose a color<br /></label>
+        <input id="color" type="color" />
+      </div>
+      <div>
+        <label for="rate">Rate the movie inception out of 10<br /></label>
+        <input type="range" id="rate" />
+      </div>
+      <div>
+        <label for="genre">Book genre you love?<br /></label>
+        <input id="genre1" class="genre" type="radio" name="fav_language" />
+        <label for="html">Fiction</label><br />
+        <input id="genre2" class="genre" type="radio" name="fav_language" />
+        <label for="html">Non Fiction</label><br />
+        <input id="genre3" class="genre" type="radio" name="fav_language" />
+        <label for="html">Adventure</label><br />
+      </div>
+      <div>
+        <input id="terms" type="checkbox" />
+        <label for="terms">I Agree to Terms</label><br />
+      </div>
+      <div>
+        <button type="submit" id="submit">Submit</button>
+      </div>    
+    </form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
