@@ -16,9 +16,10 @@
           id="name-id"
           class="name"
           placeholder="Enter your name"
-          required
         />
+        <span class="nameError"></span>
       </div>
+
       <div class="email-div">
         <label for="email-id">Your Email:</label>
         <input
@@ -26,9 +27,10 @@
           id="email-id"
           class="email"
           placeholder="Enter your mail"
-          required
         />
+        <span class="emailError"></span>
       </div>
+
       <div class="select-div">
         <label for="love-id">What do you love?</label>
         <select name="movies" id="love-id" class="list">
@@ -53,7 +55,7 @@
         <div>Book Genre You Love</div>
 
         <label for="fict">
-          <input id="fict" name="genre" type="radio" value="Fiction" checked />
+          <input id="fict" name="genre" type="radio" value="Fiction" />
           Fiction
         </label>
 
@@ -66,13 +68,15 @@
           <input id="adve" name="genre" type="radio" value="Adventure" />
           Adventure
         </label>
+        <span class="radioError"></span>
       </div>
 
       <div class="formdesign">
         <label for="check-box" class="important">
-          <input type="checkbox" id="check-box" required />
-          I Agree to Terms
-        </label>
+          <input type="checkbox" id="check-box" />
+          I accept <a href="#">terms and condition</a></label
+        >
+        <span class="checkboxError"></span>
       </div>
 
       <div class="submit-div">

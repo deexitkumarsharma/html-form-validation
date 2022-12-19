@@ -6,18 +6,27 @@ let color = document.getElementById("color-id");
 let rating = document.getElementById("range-id");
 
 let form = document.getElementById("form");
-let radio = document.getElementById("genre-div-id");
+let radio = document.querySelectorAll("input[type='radio']");
+let checkbox = document.querySelector(`input[type='checkbox']`);
+
 let radioValue = "";
-
-let terms = document.querySelector("#check-box");
-
-radio.addEventListener("click", (event) => {
+document.getElementById("genre-div-id").addEventListener("click", (event) => {
   radioValue = event.target.value;
 });
 
-let array = [nameInput, mail];
-// adding elements to the modal
+let nameErr = document.querySelector(".nameError");
+let radioErr = document.querySelector(".radioError");
+let mailErr = document.querySelector(".emailError");
 
+// console.log(radio)
+// console.log(count)
+
+let terms = document.querySelector("#check-box");
+
+let array = [nameInput, mail];
+// console.log(array);
+
+// adding elements to the modal div
 let finalDiv = document.getElementById("modal");
 finalDiv.classList.add("form-results");
 let div = document.createElement("div");
@@ -29,23 +38,23 @@ close.className = "close";
 close.textContent = "close";
 closeDiv.appendChild(close);
 
-let nameP = document.createElement("div");
-let mailP = document.createElement("div");
-let loveP = document.createElement("div");
-let colorP = document.createElement("div");
-let ratingP = document.createElement("div");
-let genreP = document.createElement("div");
-let termsP = document.createElement("div");
-termsP.className = "terms";
+let nameDiv = document.createElement("div");
+let emailDiv = document.createElement("div");
+let whatYouLoveDiv = document.createElement("div");
+let colorDiv = document.createElement("div");
+let ratingDiv = document.createElement("div");
+let genreDiv = document.createElement("div");
+let termsDiv = document.createElement("div");
+termsDiv.className = "terms";
 
-div.appendChild(nameP);
-nameP.classList.add("classnameP");
-div.appendChild(mailP);
-div.appendChild(loveP);
-div.appendChild(colorP);
-div.appendChild(ratingP);
-div.appendChild(genreP);
-div.appendChild(termsP);
+div.appendChild(nameDiv);
+nameDiv.classList.add("classnameDiv");
+div.appendChild(emailDiv);
+div.appendChild(whatYouLoveDiv);
+div.appendChild(colorDiv);
+div.appendChild(ratingDiv);
+div.appendChild(genreDiv);
+div.appendChild(termsDiv);
 
 finalDiv.appendChild(closeDiv);
 finalDiv.appendChild(div);
@@ -55,31 +64,69 @@ finalDiv.style.display = "none";
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  let flag = true;
+  // function for checking error
+  let count = 0;
+  if (nameInput.value.length < 5) {
+    nameErr.innerHTML = "* please Fill full Name";
+    flag = false;
+  } else {
+    nameErr.innerHTML = "";
+  }
+
+  radio.forEach((e) => {
+    if (!e.checked) {
+      count++;
+    }
+  });
+  if (count >= 3) {
+    radioErr.innerHTML = "* Please Select Any one";
+    flag = false;
+  } else {
+    radioErr.innerHTML = "";
+  }
+
+  if (!mail.value.match("@")) {
+    mailErr.innerHTML = "*Enter correct Email Address";
+    flag = false;
+  } else {
+    mailErr.innerHTML = "";
+  }
+
+  if (!checkbox.checked) {
+    document.querySelector(".checkboxError").innerHTML = "*Plaese Select T&C";
+    flag = false;
+  } else {
+    document.querySelector(".checkboxError").innerHTML = "";
+  }
 
   //for preventing from submitting empty data
+  console.log(count);
 
+  // console.log(count)
   for (let item of array) {
     if (item.value === "") {
       alert(`All details are mandotory`);
       return false;
     }
   }
+  if (flag) {
+    form.style.display = "none"; //Important concept for popup
+    nameDiv.textContent = `Hello ${nameInput.value}`;
+    emailDiv.textContentP = `Email : ${mail.value}`;
+    whatYouLoveDiv.textContent = `You Love : ${love.value}`;
+    colorDiv.textContent = `Color : ${color.value}`;
+    ratingDiv.textContent = `Rating : ${rating.value / 10}`;
+    genreDiv.textContent = `Book Genre : ${radioValue}`;
+    termsDiv.textContent = "👉 I Agreed to terms and conditions";
 
-  form.style.display = "none"; //Important concept for popup
-  nameP.textContent = `Hello ${nameInput.value}`;
-  mailP.textContentP = `Email : ${mail.value}`;
-  loveP.textContent = `You Love : ${love.value}`;
-  colorP.textContent = `Color : ${color.value}`;
-  ratingP.textContent = `Rating : ${rating.value / 10}`;
-  genreP.textContent = `Book Genre : ${radioValue}`;
-  termsP.textContent = "👉 I Agreed to terms and conditions";
+    finalDiv.style.display = "flex";
 
-  finalDiv.style.display = "flex";
-
-  close.addEventListener("click", () => {
-    console.log("gone");
-    finalDiv.style.display = "none";
-    form.style.display = "flex";
-  });
+    close.addEventListener("click", () => {
+      console.log("gone");
+      finalDiv.style.display = "none";
+      form.style.display = "flex";
+    });
+  }
   form.reset();
 });
