@@ -35,6 +35,14 @@ form div {
   row-gap: 10px;
 }
 
+/* Error Style */
+.emailError,
+.nameError,
+.redioError,
+.checkboxError {
+  color: red;
+}
+
 .rating-div,
 .submit-div {
   display: contents;

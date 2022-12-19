@@ -4,6 +4,7 @@ let mail = document.getElementById("email-id");
 let love = document.getElementById("love-id");
 let color = document.getElementById("color-id");
 let rating = document.getElementById("range-id");
+let terms = document.querySelector("#check-box");
 
 let form = document.getElementById("form");
 let radio = document.querySelectorAll("input[type='radio']");
@@ -21,7 +22,6 @@ let mailErr = document.querySelector(".emailError");
 // console.log(radio)
 // console.log(count)
 
-let terms = document.querySelector("#check-box");
 
 let array = [nameInput, mail];
 // console.log(array);
@@ -45,6 +45,7 @@ let colorDiv = document.createElement("div");
 let ratingDiv = document.createElement("div");
 let genreDiv = document.createElement("div");
 let termsDiv = document.createElement("div");
+
 termsDiv.className = "terms";
 
 div.appendChild(nameDiv);
